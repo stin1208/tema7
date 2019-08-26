@@ -15,8 +15,14 @@
         let areal = længde * bredde;
         let resultat = `Længden er ${længde} meter og bredden er ${bredde} meter arealet er ${areal} kvadratmeter`;
 
+        if (areal < 100) {
+            console.log('Er arealet for lille');
+        } else if (areal < 200) {
+            console.log('ok');
+        } else {
+            console.log('Arealet er for stort');
+        }
+
         console.log(resultat);
     </script>
-</body>
-
-</html>
+</body></html>
