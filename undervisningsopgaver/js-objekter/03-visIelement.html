@@ -11,8 +11,12 @@
 <body>
 
     <article>
-        <p></p>
+        <h2></h2>
         <img src="" alt "">
+
+        <p></p>
+        <p class="typen"></p>
+        <p class="levestedet"></p>
     </article>
 
 
@@ -33,11 +37,18 @@
         function start() {
             console.log("start")
 
-            const dyrContainer = document.querySelector("p");
+            //const dyrContainer = document.querySelector("p");
+            const navnContainer = document.querySelector("h2");
+            const typeContainer = document.querySelector(".typen");
+            const levestedContainer = document.querySelector(".levestedet");
             const billedeContainer = document.querySelector("img");
 
-            dyrContainer.textContent = `Dyr: ${dyr.navn}, Type: ${dyr.type}, Levested: ${dyr.levested}`
+            navnContainer.textContent = `Dyr: ${dyr.navn}`;
             billedeContainer.src = dyr.billede;
+
+            typeContainer.textContent = `Type: ${dyr.type}`;
+            levestedContainer.textContent = `Levested: ${dyr.levested}`;
+
         }
     </script>
 </body></html>
