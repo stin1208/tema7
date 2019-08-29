@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            border: 1px solid black;
+            padding: 10px;
+            width: 10vw;
+        }
+
+        article {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <template>
+        <article id="liste">
+            <h2></h2>
+            <p></p>
+            <img src="" alt="">
+        </article>
+    </template>
+
+    <section class="modtager"></section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            const dyr = [{
+
+
+                "navn": "Frø",
+                "type": "amfibie",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "levested": "vandhullet"
+            }, {
+                "navn": "Gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": "svinefarme"
+            }, {
+                "navn": "Ræv",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "levested": "skoven"
+
+            }, {
+                "navn": "Sild",
+                "type": "fisk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+                "levested": "havet"
+
+            }, {
+                "navn": "Krokodille",
+                "type": "krybdyr",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+                "levested": "floden"
+
+            }]
+
+
+            console.log(dyr);
+
+            const modtagerKloner = document.querySelector(".modtager");
+            const temp = document.querySelector("template");
+
+
+            dyr.forEach(hvertDyr => {
+                //listeVisning.innerHTML += `<p>${hvertDyr.navn}, ${hvertDyr.type}, ${hvertDyr.levested}</p>`;
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector("h2").textContent = hvertDyr.navn;
+                klon.querySelector("p").textContent = hvertDyr.type;
+                klon.querySelector("img").src = hvertDyr.billede;
+
+
+                modtagerKloner.appendChild(klon);
+
+            })
+        }
+    </script>
+
+</body></html>
