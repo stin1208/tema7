@@ -85,7 +85,7 @@
 
             const dest = document.querySelector("liste");
             const temp = document.querySelector("template");
-
+            let filter = "k";
 
 
             console.log(allePersoner);
@@ -96,17 +96,21 @@
 
             allePersoner.feed.entry.forEach(hverPerson => {
                 //listeVisning.innerHTML += `<p>${hvertDyr.navn}, ${hvertDyr.type}, ${hvertDyr.levested}</p>`;
-                const klon = temp.cloneNode(true).content;
-                klon.querySelector("h2").textContent = hverPerson.gsx$navn.$t;
-                klon.querySelector("a").textContent = hverPerson.gsx$github.$t;
-                klon.querySelector(".alder").textContent = hverPerson.gsx$alder.$t;
-                klon.querySelector(".kon").textContent = hverPerson.gsx$køn.$t;
-                klon.querySelector(".hold").textContent = hverPerson.gsx$hold.$t;
-                klon.querySelector(".historie").textContent = hverPerson.gsx$historie.$t;
-                klon.querySelector("img").src = hverPerson.gsx$billede.$t;
+                if (hverPerson.gsx$køn.$t == filter) {
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = hverPerson.gsx$navn.$t;
+                    klon.querySelector("a").textContent = hverPerson.gsx$github.$t;
+                    klon.querySelector(".alder").textContent = hverPerson.gsx$alder.$t;
+                    klon.querySelector(".kon").textContent = hverPerson.gsx$køn.$t;
+                    klon.querySelector(".hold").textContent = hverPerson.gsx$hold.$t;
+                    klon.querySelector(".historie").textContent = hverPerson.gsx$historie.$t;
+                    klon.querySelector("img").src = hverPerson.gsx$billede.$t;
+                    modtagerKloner.appendChild(klon);
+
+                }
 
 
-                modtagerKloner.appendChild(klon);
+
 
             })
         }
