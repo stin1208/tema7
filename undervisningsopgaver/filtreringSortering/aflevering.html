@@ -78,12 +78,11 @@
 
     <h1>Alle</h1>
     <nav>
-        <button class="filter" data-køn="alle" data-hold="alle">Alle</button>
-        <button class="filter" data-forretter="forretter" data-hold="alle">forretter</button>
-        <button class="filter" data-køn="k" data-hold="alle">Kvinder</button>
-        <button class="filter" data-køn="andet" data-hold="alle">Andet</button>
-        <button class="filter" data-hold="a" data-køn="alle">Hold A</button>
-        <button class="filter" data-hold="b" data-køn="alle">Hold B</button>
+        <button class="filter" data-kategori="alle">Alle</button>
+        <button class="filter" data-kategori="forretter">forretter</button>
+        <button class="filter" data-kategori="hovedretter">Hovedretter</button>
+        <button class="filter" data-kategori="desserter">Dessert</button>
+        <button class="filter" data-kategori="drikkevarer">Drikkevare</button>
 
     </nav>
 
@@ -104,8 +103,7 @@
 
     <script>
         let allePersoner = [];
-        let filterForretter = "forretter";
-        let filterHold = "alle";
+        let filterKategori = "alle";
         const dest = document.querySelector("liste");
         const temp = document.querySelector("template");
         const modtagerKloner = document.querySelector(".modtager");
@@ -136,7 +134,7 @@
 
             allePersoner.feed.entry.forEach(ret => {
                 //listeVisning.innerHTML += `<p>${hvertDyr.navn}, ${hvertDyr.type}, ${hvertDyr.levested}</p>`;
-                if ((filterForretter == "forretter" || ret.gsx$forretter.$t == filterForretter) && (filterHold == "alle" || ret.gsx$hold.$t == filterHold)) {
+                if ((filterKategori == "alle" || ret.gsx$kategori.$t == filterKategori)) {
                     const klon = temp.cloneNode(true).content;
                     klon.querySelector("h2").textContent = ret.gsx$navn.$t;
                     klon.querySelector(".kategori").textContent = ret.gsx$kategori.$t;
@@ -163,8 +161,7 @@
         }
 
         function filtrering() {
-            filterForretter = this.dataset.køn;
-            filterHold = this.dataset.hold;
+            filterKategori = this.dataset.kategori;
             document.querySelector("h1").textContent = this.textContent;
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.classList.remove("valgt");
